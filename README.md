@@ -2,7 +2,7 @@
 
 [中文文档](README_CN.md)
 
-Using Docker, you can quickly deploy isolated, virtual, and identical development environments, eliminating the "it works on my machine" problem.
+Using Docker allows for the rapid deployment of isolated, virtual, and entirely identical development environments, eliminating the scenario of "It runs on my machine, but not on yours."
 
 ## How to Use
 
