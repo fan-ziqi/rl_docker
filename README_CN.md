@@ -1,8 +1,8 @@
 # rl_docker
 
-[English README](README.md)
+[English document](README.md)
 
-此项目用于配置基于isaac_gym的强化学习docker环境。
+此项目用于配置基于[isaac_gym](https://developer.nvidia.com/isaac-gym)的强化学习docker环境。
 
 使用docker可以快速部署隔离的、虚拟的、完全相同的开发环境，不会出现“我的电脑能跑，你的电脑跑不了”的情况。
 
