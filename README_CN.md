@@ -30,8 +30,8 @@ bash build.sh
 ### 运行镜像
 
 ```bash
-bash run.sh -g <gpus, should be num or all> -d <true/false>
-# example: bash run.sh -g 0 -d true
+bash run.sh -g <gpus, should be num 1~9 or all> -d <true/false>
+# example: bash run.sh -g all -d true
 ```
 
 git不会track这两个新建的文件，如有需要请自行修改。

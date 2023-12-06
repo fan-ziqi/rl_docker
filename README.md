@@ -30,8 +30,8 @@ bash build.sh
 ### Run the Image
 
 ```bash
-bash run.sh -g <gpus, should be num or all> -d <true/false>
-# example: bash run.sh -g 0 -d true
+bash run.sh -g <gpus, should be num 1~9 or all> -d <true/false>
+# example: bash run.sh -g all -d true
 ```
 
 These two newly created files will not be tracked by Git. If needed, please modify them manually.
