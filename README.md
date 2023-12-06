@@ -1,84 +1,86 @@
 # rl_docker
 
-使用docker可以快速部署隔离的、虚拟的、完全相同的开发环境， 不会出现“我的电脑能跑，你的电脑跑不了”的情况。
+[中文文档](README_CN.md)
 
-## 如何使用
+Using Docker, you can quickly deploy isolated, virtual, and identical development environments, eliminating the "it works on my machine" problem.
 
-### 完善配置文件
+## How to Use
 
-将`requirement_template.txt`复制一份并命名为`requirement.txt`，在此添加所需要的python依赖项
+### Configure Files
 
-将`setup_template.sh`复制一份并命名为`setup.sh`，在此配置所有需要配置的python包
+Copy `requirement_template.txt` and rename it to `requirement.txt`. Add the necessary Python dependencies to this file.
 
-### 构建镜像
+Copy `setup_template.sh` and rename it to `setup.sh`. Configure all the required Python packages in this file.
+
+### Build the Image
 
 ```bash
 bash build.sh
 ```
 
-### 运行镜像
+### Run the Image
 
 ```bash
 bash run.sh -g <gpus, should be num or all> -d <true/false>
 # example: bash run.sh -g 0 -d true
 ```
 
-git不会track这两个新建的文件，如有需要请自行修改。
+These two newly created files will not be tracked by Git. If needed, please modify them manually.
 
-使用`Ctrl+P+Q`可退出当前终端，使用`exit`结束容器；
+Use `Ctrl+P+Q` to exit the current terminal and use `exit` to stop the container.
 
-## 查看资源使用情况
+## Check Resource Usage
 
 ```bash
 bash exec.sh
 ```
 
-镜像中内置了`nvitop`，新建一个窗口，运行`docker exec -it isaacgym_container /bin/bash`进入容器，运行`nvitop`查看系统资源使用情况。使用`exit`或者`Ctrl+P+Q`均可退出当前终端而不结束容器；
+The image comes with `nvitop` installed. Open a new window, run `docker exec -it isaacgym_container /bin/bash` to enter the container, and use `nvitop` to view the system resource usage. Use `exit` or `Ctrl+P+Q` to exit the current terminal without stopping the container.
 
-## 问题解决
+## Troubleshooting
 
-### 显卡问题
+### GPU Issues
 
-* 如果使用的是RTX4090显卡，请修改`docker/Dockerfile`文件中的第一句为：
+* If you are using an RTX 4090 GPU, modify the first line of the `docker/Dockerfile` file to:
 
   ```dockerfile
   nvcr.io/nvidia/pytorch:22.12-py3
   ```
 
-* 如果使用的是RTX3070显卡，则无需修改
+* If you are using an RTX 3070 GPU, no modifications are needed.
 
-### 权限问题
+### Permission Issues
 
-执行`run.sh`脚本的时候若出现如下报错：
+If you encounter the following error when running the `run.sh` script:
 
 ```
 Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error running hook #0: error running hook: exit status 1, stdout: , stderr: Auto-detected mode as 'legacy'
 nvidia-container-cli: initialization error: load library failed: libnvidia-ml.so.1: cannot open shared object file: no such file or directory: unknown
 ```
 
-出现此问题大多是因为没有使用root权限运行容器，以下几种方案均可：
+This error is mostly due to not running the container with root privileges. Here are a few solutions:
 
-* 在bash前加root
-* 切换至root用户
-* 将当前用户加入root组
+* Prefix the bash command with `root`.
+* Switch to the root user.
+* Add the current user to the root group.
 
-若无法找到构建好的isaacgym镜像，则需重新以root权限构建镜像。
+If you cannot find the pre-built isaacgym image, you need to rebuild the image with root permissions.
 
-### runtime问题
+### Runtime Issue
 
-执行`run.sh`脚本的时候若出现如下报错：
+If you encounter the following error when running the `run.sh` script:
 
 ```
 docker: Error response from daemon: could not select device driver "" with capabilities:[[gpu]].
 ```
 
-则需要安装`nvidia-container-runtime`和`nvidia-container-toolkit`两个包，并修改Docker daemon 的启动参数，将默认的 Runtime修改为 nvidia-container-runtime：
+You need to install the `nvidia-container-runtime` and `nvidia-container-toolkit` packages, and modify the Docker daemon startup parameter to change the default runtime to `nvidia-container-runtime`:
 
 ```bash
- vi /etc/docker/daemon.json 
+vi /etc/docker/daemon.json
 ```
 
-修改内容为
+Update the content to:
 
 ```json
 {
@@ -91,5 +93,3 @@ docker: Error response from daemon: could not select device driver "" with capab
     }
 }
 ```
-
-## 
