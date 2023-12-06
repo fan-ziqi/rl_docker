@@ -4,6 +4,7 @@ set -u
 
 SCRIPTROOT="$( cd "$(dirname "\$0")" ; pwd -P )"
 PROJECTNAME=$(basename "$(cd "$(dirname "\$0")"; cd ..; pwd -P)")
+HOMENAME=$(basename $HOME)
 
 display_flag=""
 gpus=""
@@ -34,7 +35,7 @@ errors=""
 
 if [ -z "$gpus" ]; then
   errors+="GPUs parameter is required.\n"
-elif ! [[ "$gpus" =~ ^[0-9]+$ ]] && [ "$gpus" != "all" ]; then
+elif ! [[ "$gpus" =~ ^[1-9]+$ ]] && [ "$gpus" != "all" ]; then
   errors+="Invalid GPUs parameter. Must be a numeric value or 'all'.\n"
 fi
 
@@ -58,7 +59,7 @@ if [ "$display_flag" = true ]; then
   xhost +
   docker run -it --rm \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v /home/fzq/.Xauthority:/root/.Xauthority \
+    -v /home/${HOMENAME}/.Xauthority:/root/.Xauthority \
     -e DISPLAY=$DISPLAY \
     -v ${SCRIPTROOT}/..:/home/root/rl_ws \
     --network=host \
