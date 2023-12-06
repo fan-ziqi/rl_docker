@@ -8,7 +8,14 @@
 
 ## 如何使用
 
-### 完善配置文件
+### 拉取本仓库到你的项目根目录下
+
+```bash
+git clone https://github.com/fan-ziqi/rl_docker.git
+cd rl_docker
+```
+
+### 复制并修改配置文件
 
 将`requirement_template.txt`复制一份并命名为`requirement.txt`，在此添加所需要的python依赖项
 

@@ -8,7 +8,14 @@ Using Docker allows for the rapid deployment of isolated, virtual, and entirely 
 
 ## How to Use
 
-### Configure Files
+### Clone this repository into the root directory of your project.
+
+```bash
+git clone https://github.com/fan-ziqi/rl_docker.git
+cd rl_docker
+```
+
+### Copy and modify the configuration file.
 
 Copy `requirement_template.txt` and rename it to `requirement.txt`. Add the necessary Python dependencies to this file.
 
