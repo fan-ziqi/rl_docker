@@ -4,7 +4,7 @@
 
 This project is used to configure a Reinforcement Learning Docker environment based on isaac_gym.
 
-Using Docker allows for the rapid deployment of isolated, virtual, and entirely identical development environments, eliminating the scenario of "It runs on my machine, but not on yours."
+Using Docker allows for the rapid deployment of isolated, virtual, and identical development environments, eliminating the situation of "it runs on my computer, but not on yours."
 
 ## How to Use
 
