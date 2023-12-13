@@ -17,9 +17,32 @@ cd rl_docker
 
 ### 复制并修改配置文件
 
-将`requirement_template.txt`复制一份并命名为`requirement.txt`，在此添加所需要的python依赖项
+将`requirement_template.txt`复制一份并命名为`requirement.txt`，在此文件中添加所需要的python依赖项。（在此文件中添加的依赖项在docker构建时下载，生成容器后不会重复下载）
 
-将`setup_template.sh`复制一份并命名为`setup.sh`，在此配置所有需要配置的python包
+将`setup_template.sh`复制一份并命名为`setup.sh`，在此文件中配置所有python包。（在此文件中添加的依赖项在docker容器每次运行时都会重新下载，仅为了解决某些依赖冲突的问题。没有特殊情况请将依赖项都写入`requirement.txt`中）
+
+对于`setup_template.sh`，其对应的工作目录文件层级如下：
+
+```
+rl_ws/
+│
+├── isaacgym/
+│   ├── python/
+│   │   ├── setup.py
+│   │   └── ...
+│   │
+│   └── ...
+│
+├── rsl_rl/
+│   ├── setup.py
+│   └── ...
+│
+├── legged_gym/
+│   ├── setup.py
+│   └── ...
+│
+└── ...
+```
 
 ### 构建镜像
 

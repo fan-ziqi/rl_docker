@@ -17,9 +17,32 @@ cd rl_docker
 
 ### Copy and modify the configuration file.
 
-Copy `requirement_template.txt` and rename it to `requirement.txt`. Add the necessary Python dependencies to this file.
+Copy `requirement_template.txt` and rename it to `requirement.txt`. In this file, add the necessary Python dependencies. (Dependencies added in this file will be downloaded during Docker build and will not be re-downloaded after the container is generated.)
 
-Copy `setup_template.sh` and rename it to `setup.sh`. Configure all the required Python packages in this file.
+Copy `setup_template.sh` and rename it to `setup.sh`. In this file, configure all Python packages. (Dependencies added in this file will be re-downloaded every time the Docker container is run, only to address specific dependency conflicts. Unless there are special circumstances, include all dependencies in `requirement.txt`.)
+
+For `setup_template.sh`, the corresponding working directory file hierarchy is as follows:
+
+```
+rl_ws/
+│
+├── isaacgym/
+│   ├── python/
+│   │   ├── setup.py
+│   │   └── ...
+│   │
+│   └── ...
+│
+├── rsl_rl/
+│   ├── setup.py
+│   └── ...
+│
+├── legged_gym/
+│   ├── setup.py
+│   └── ...
+│
+└── ...
+```
 
 ### Build the Image
 
