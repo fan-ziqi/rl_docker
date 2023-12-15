@@ -19,7 +19,15 @@ cd rl_docker
 
 将`requirement_template.txt`复制一份并命名为`requirement.txt`，在此文件中添加所需要的python依赖项。（在此文件中添加的依赖项在docker构建时下载，生成容器后不会重复下载）
 
+```bash
+cp -p requirement_template.txt requirement.txt
+```
+
 将`setup_template.sh`复制一份并命名为`setup.sh`，在此文件中配置所有python包。（在此文件中添加的依赖项在docker容器每次运行时都会重新下载，仅为了解决某些依赖冲突的问题。没有特殊情况请将依赖项都写入`requirement.txt`中）
+
+```bash
+cp -p setup_template.sh setup.sh
+```
 
 对于`setup_template.sh`，其对应的工作目录文件层级如下：
 
@@ -57,7 +65,7 @@ bash run.sh -g <gpus, should be num 1~9 or all> -d <true/false>
 # example: bash run.sh -g all -d true
 ```
 
-git不会track这两个新建的文件，如有需要请自行修改。
+Git不会track这两个新建的文件，如有需要请自行修改`.gitignore`。
 
 使用`Ctrl+P+Q`可退出当前终端，使用`exit`结束容器；
 

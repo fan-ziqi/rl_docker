@@ -19,7 +19,15 @@ cd rl_docker
 
 Copy `requirement_template.txt` and rename it to `requirement.txt`. In this file, add the necessary Python dependencies. (Dependencies added in this file will be downloaded during Docker build and will not be re-downloaded after the container is generated.)
 
+```bash
+cp -p requirement_template.txt requirement.txt
+```
+
 Copy `setup_template.sh` and rename it to `setup.sh`. In this file, configure all Python packages. (Dependencies added in this file will be re-downloaded every time the Docker container is run, only to address specific dependency conflicts. Unless there are special circumstances, include all dependencies in `requirement.txt`.)
+
+```bash
+cp -p setup_template.sh setup.sh
+```
 
 For `setup_template.sh`, the corresponding working directory file hierarchy is as follows:
 
@@ -57,7 +65,7 @@ bash run.sh -g <gpus, should be num 1~9 or all> -d <true/false>
 # example: bash run.sh -g all -d true
 ```
 
-These two newly created files will not be tracked by Git. If needed, please modify them manually.
+These two newly created files will not be tracked by Git. If needed, please modify`.gitignore`.
 
 Use `Ctrl+P+Q` to exit the current terminal and use `exit` to stop the container.
 
