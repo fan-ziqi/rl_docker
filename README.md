@@ -34,6 +34,9 @@ For `setup_template.sh`, the corresponding working directory file hierarchy is a
 ```
 rl_ws/
 │
+├── rl_docker/
+│   └── ...
+│
 ├── isaacgym/
 │   ├── python/
 │   │   ├── setup.py

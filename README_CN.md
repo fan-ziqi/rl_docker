@@ -34,6 +34,9 @@ cp -p setup_template.sh setup.sh
 ```
 rl_ws/
 │
+├── rl_docker/
+│   └── ...
+│
 ├── isaacgym/
 │   ├── python/
 │   │   ├── setup.py
