@@ -74,11 +74,7 @@ Git不会track这两个新建的文件，如有需要请自行修改`.gitignore`
 
 ## 查看资源使用情况
 
-```bash
-bash exec.sh
-```
-
-镜像中内置了`nvitop`，新建一个窗口，运行`docker exec -it isaacgym_container /bin/bash`进入容器，运行`nvitop`查看系统资源使用情况。使用`exit`或者`Ctrl+P+Q`均可退出当前终端而不结束容器；
+镜像中内置了`nvitop`，新建一个窗口，运行`bash exec.sh`进入容器，运行`nvitop`查看系统资源使用情况。使用`exit`或者`Ctrl+P+Q`均可退出当前终端而不结束容器；
 
 ## 问题解决
 

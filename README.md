@@ -74,11 +74,7 @@ Use `Ctrl+P+Q` to exit the current terminal and use `exit` to stop the container
 
 ## Check Resource Usage
 
-```bash
-bash exec.sh
-```
-
-The image comes with `nvitop` installed. Open a new window, run `docker exec -it isaacgym_container /bin/bash` to enter the container, and use `nvitop` to view the system resource usage. Use `exit` or `Ctrl+P+Q` to exit the current terminal without stopping the container.
+The image comes with `nvitop` installed. Open a new window, run `bash exec.sh` to enter the container, and use `nvitop` to view the system resource usage. Use `exit` or `Ctrl+P+Q` to exit the current terminal without stopping the container.
 
 ## Troubleshooting
 
