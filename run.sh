@@ -3,7 +3,7 @@ set -e
 set -u
 
 SCRIPTROOT="$( cd "$(dirname "\$0")" ; pwd -P )"
-PROJECTNAME=$(basename "$(cd "$(dirname "\$0")"; cd ..; pwd -P)")
+PROJECTNAME=$(basename "$(cd "$(dirname "\$0")"; cd ..; pwd -P)" | tr '[:upper:]' '[:lower:]')
 HOMENAME=$(basename $HOME)
 
 display_flag=""
