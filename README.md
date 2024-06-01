@@ -6,6 +6,8 @@ This project is used to configure a Reinforcement Learning Docker environment ba
 
 Using Docker allows for the rapid deployment of isolated, virtual, and identical development environments, eliminating the situation of "it runs on my computer, but not on yours."
 
+[Click to discuss on Discord](https://discord.gg/MC9KguQHtt)
+
 ## How to Use
 
 ### Clone this repository into the root directory of your project.
