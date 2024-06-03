@@ -90,6 +90,10 @@ Git不会track这两个新建的文件，如有需要请自行修改`.gitignore`
 
 * 如果使用的是RTX3070显卡，则无需修改
 
+其他显卡的pytorch支持版本请在下方链接中查找
+
+[Frameworks Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html)
+
 ### 权限问题
 
 执行`run.sh`脚本的时候若出现如下报错：

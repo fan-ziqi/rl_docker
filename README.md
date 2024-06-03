@@ -90,6 +90,10 @@ The image comes with `nvitop` installed. Open a new window, run `bash exec.sh` t
 
 * If you are using an RTX 3070 GPU, no modifications are needed.
 
+Please find the supported versions of pytorch for other GPUs in the link below
+
+[Frameworks Support Matrix](https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html)
+
 ### Permission Issues
 
 If you encounter the following error when running the `run.sh` script:
