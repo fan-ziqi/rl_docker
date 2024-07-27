@@ -122,7 +122,16 @@ docker: Error response from daemon: could not select device driver "" with capab
 则需要安装`nvidia-container-runtime`和`nvidia-container-toolkit`两个包，并修改Docker daemon 的启动参数，将默认的 Runtime修改为 nvidia-container-runtime：
 
 ```bash
- vi /etc/docker/daemon.json 
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+sudo apt update
+sudo apt install nvidia-container-toolkit nvidia-container-runtime
+```
+
+```bash
+sudo vi /etc/docker/daemon.json
 ```
 
 修改内容为
@@ -137,4 +146,10 @@ docker: Error response from daemon: could not select device driver "" with capab
         }
     }
 }
+```
+
+重启docker服务:
+
+```bash
+systemctl restart docker
 ```

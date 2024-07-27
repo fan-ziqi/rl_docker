@@ -122,7 +122,16 @@ docker: Error response from daemon: could not select device driver "" with capab
 You need to install the `nvidia-container-runtime` and `nvidia-container-toolkit` packages, and modify the Docker daemon startup parameter to change the default runtime to `nvidia-container-runtime`:
 
 ```bash
-vi /etc/docker/daemon.json
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+sudo apt update
+sudo apt install nvidia-container-toolkit nvidia-container-runtime
+```
+
+```bash
+sudo vi /etc/docker/daemon.json
 ```
 
 Update the content to:
@@ -137,4 +146,10 @@ Update the content to:
         }
     }
 }
+```
+
+Reload docker service:
+
+```bash
+systemctl restart docker
 ```
