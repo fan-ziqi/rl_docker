@@ -10,8 +10,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # replace mirror
 RUN apt-get install -q -y --no-install-recommends wget \
-&& wget http://archive.ubuntu.com/ubuntu/pool/main/c/ca-certificates/ca-certificates_20230311ubuntu0.20.04.1_all.deb \
-&& dpkg -i ./ca-certificates_20230311ubuntu0.20.04.1_all.deb
+&& wget http://archive.ubuntu.com/ubuntu/pool/main/c/ca-certificates/ca-certificates_20240203~20.04.1_all.deb \
+&& dpkg -i ./ca-certificates_20240203~20.04.1_all.deb
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse\n" > /etc/apt/sources.list && \
   echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse\n" >> /etc/apt/sources.list && \
