@@ -42,8 +42,10 @@ RUN apt-get update \
  x11-apps
 
 # change pip mirror
-RUN python -m pip install --upgrade pip \
-&& pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+# update pip
+RUN python -m pip install --upgrade pip
 
 # pip install requirements
 COPY requirement.txt .
